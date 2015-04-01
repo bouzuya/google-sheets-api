@@ -1,0 +1,25 @@
+{
+  "name": "google-sheets-api",
+  "description": "A Google Sheets API client (unofficial)",
+  "version": "0.0.0",
+  "author": "bouzuya",
+  "bugs": {
+    "url": "https://github.com/bouzuya/google-sheets-api/issues"
+  },
+  "homepage": "https://github.com/bouzuya/google-sheets-api",
+  "keywords": [
+    "google",
+    "sheets",
+    "api",
+    "client"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bouzuya/google-sheets-api.git"
+  },
+  "scripts": {
+    "test": "exit 0"
+  }
+}
