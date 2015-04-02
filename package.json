@@ -25,6 +25,7 @@
     "url": "https://github.com/bouzuya/google-sheets-api.git"
   },
   "scripts": {
+    "clean": "gulp clean",
     "test": "exit 0"
   }
 }
