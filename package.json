@@ -29,6 +29,7 @@
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
+    "start": "gulp",
     "test": "exit 0"
   }
 }

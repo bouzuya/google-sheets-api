@@ -1,6 +1,7 @@
 coffee = require 'gulp-coffee'
 del = require 'del'
 gulp = require 'gulp'
+run = require 'run-sequence'
 
 gulp.task 'build', ->
   gulp.src './src/**/*.coffee'
@@ -12,4 +13,9 @@ gulp.task 'clean', (done) ->
     './lib'
   ], done
 
-gulp.task 'default', ['clean']
+gulp.task 'default', (done) ->
+  run.apply run, [
+    'clean'
+    'build'
+    done
+  ]
