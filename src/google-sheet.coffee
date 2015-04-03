@@ -23,6 +23,7 @@
 google = require 'googleapis'
 {Promise} = require 'es6-promise'
 {parseString} = require 'xml2js'
+projections = require './projections'
 
 class Client
   @baseUrl: 'https://spreadsheets.google.com/feeds'
@@ -31,9 +32,7 @@ class Client
     private: 'private'
     public: 'public'
 
-  @projections:
-    basic: 'basic'
-    full: 'full'
+  @projections: projections
 
   constructor: ({ @email, @key }) ->
 
