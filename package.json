@@ -1,7 +1,7 @@
 {
   "name": "google-sheets-api",
   "description": "A Google Sheets API client (unofficial)",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "bouzuya",
   "bugs": {
     "url": "https://github.com/bouzuya/google-sheets-api/issues"
