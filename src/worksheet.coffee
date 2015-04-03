@@ -1,7 +1,6 @@
-# FIXME: require './client' is circular reference.
-# FIXME: Client.visibilities
-# FIXME: Client.projections
-# FIXME: Client.baseUrl
+baseUrl = require './base-url'
+projections = require './projections'
+visibilities = require './visibilities'
 
 class Worksheet
   constructor: ({ @client, @spreadsheet, @id }) ->
@@ -11,8 +10,8 @@ class Worksheet
     url = @_getCellUrl
       key: @spreadsheet.key
       worksheetId: @id
-      visibilities: Client.visibilities.private
-      projections: Client.projections.full
+      visibilities: visibilities.private
+      projections: projections.full
       row: row
       col: col
     @client.request({
@@ -30,8 +29,8 @@ class Worksheet
     url = @_getCellsUrl
       key: @spreadsheet.key
       worksheetId: @id
-      visibilities: Client.visibilities.private
-      projections: Client.projections.full
+      visibilities: visibilities.private
+      projections: projections.full
     @client.request({
       url,
       method: 'GET'
@@ -53,8 +52,8 @@ class Worksheet
     url = @_getCellUrl
       key: @spreadsheet.key
       worksheetId: @id
-      visibilities: Client.visibilities.private
-      projections: Client.projections.full
+      visibilities: visibilities.private
+      projections: projections.full
       row: row
       col: col
     @client.request({
@@ -91,8 +90,8 @@ class Worksheet
     url = @_getCellUrl
       key: @spreadsheet.key
       worksheetId: @id
-      visibilities: Client.visibilities.private
-      projections: Client.projections.full
+      visibilities: visibilities.private
+      projections: projections.full
       row: row
       col: col
     @client.request({
@@ -121,13 +120,13 @@ class Worksheet
     path = """
 /cells/#{key}/#{worksheetId}/#{visibilities}/#{projections}/R#{row}C#{col}
     """
-    Client.baseUrl + path
+    baseUrl + path
 
   # visibilities: private / public
   # projections: full / basic
   _getCellsUrl: ({ key, worksheetId, visibilities, projections }) ->
     path = "/cells/#{key}/#{worksheetId}/#{visibilities}/#{projections}"
-    Client.baseUrl + path
+    baseUrl + path
 
   _parsePosition: ({ row, col, r1c1 }) ->
     return { row, col } if row? and col?

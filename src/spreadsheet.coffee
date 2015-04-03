@@ -1,7 +1,7 @@
-# FIXME: require './client' is circular reference.
-# FIXME: Client.visibilities
-# FIXME: Client.projections
-# FIXME: Client.baseUrl
+{Worksheet} = require './worksheet'
+baseUrl = require './base-url'
+projections = require './projections'
+visibilities = require './visibilities'
 
 class Spreadsheet
   constructor: ({ @client, @key }) ->
@@ -12,8 +12,8 @@ class Spreadsheet
   getWorksheetIds: ->
     url = @_getWorksheetsUrl
       key: @key
-      visibilities: Client.visibilities.private
-      projections: Client.projections.basic
+      visibilities: visibilities.private
+      projections: projections.basic
 
     @client.request({ url })
     .then @client.parseXml.bind(@client)
@@ -27,6 +27,6 @@ class Spreadsheet
   # projections: full / basic
   _getWorksheetsUrl: ({ key, visibilities, projections }) ->
     path = "/worksheets/#{key}/#{visibilities}/#{projections}"
-    Client.baseUrl + path
+    baseUrl + path
 
 module.exports.Spreadsheet = Spreadsheet
