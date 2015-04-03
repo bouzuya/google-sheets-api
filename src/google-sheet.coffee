@@ -24,13 +24,12 @@ google = require 'googleapis'
 {Promise} = require 'es6-promise'
 {parseString} = require 'xml2js'
 projections = require './projections'
+visibilities = require './visibilities'
 
 class Client
   @baseUrl: 'https://spreadsheets.google.com/feeds'
 
-  @visibilities:
-    private: 'private'
-    public: 'public'
+  @visibilities: visibilities
 
   @projections: projections
 
