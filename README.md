@@ -1,6 +1,18 @@
 # google-sheets-api
 
-A Google Sheets API client (unofficial).
+A [Google Sheets API](https://developers.google.com/google-apps/spreadsheets/) client (unofficial).
+
+# Installation
+
+```
+$ npm install https://github.com/bouzuya/google-sheets-api/archive/master.tar.gz
+```
+
+or
+
+```
+$ npm install https://github.com/bouzuya/google-sheets-api/archive/{VERSION}.tar.gz
+```
 
 # Example
 
