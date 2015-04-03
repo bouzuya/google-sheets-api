@@ -25,6 +25,7 @@ google = require 'googleapis'
 {parseString} = require 'xml2js'
 projections = require './projections'
 visibilities = require './visibilities'
+{Spreadsheet} = require './spreadsheet'
 {Worksheet} = require './worksheet'
 
 class Client
@@ -57,34 +58,6 @@ class Client
     new Promise (resolve, reject) ->
       parseString xml, (err, parsed) ->
         if err? then reject(err) else resolve(parsed)
-
-
-class Spreadsheet
-  constructor: ({ @client, @key }) ->
-
-  getWorksheet: (id) ->
-    new Worksheet({ @client, spreadsheet: @, id })
-
-  getWorksheetIds: ->
-    url = @_getWorksheetsUrl
-      key: @key
-      visibilities: Client.visibilities.private
-      projections: Client.projections.basic
-
-    @client.request({ url })
-    .then @client.parseXml.bind(@client)
-    .then (data) ->
-      data.feed.entry.map (i) ->
-        u = i.id[0]
-        throw new Error() if u.indexOf(url) isnt 0
-        u.replace(url + '/', '')
-
-  # visibilities: private / public
-  # projections: full / basic
-  _getWorksheetsUrl: ({ key, visibilities, projections }) ->
-    path = "/worksheets/#{key}/#{visibilities}/#{projections}"
-    Client.baseUrl + path
-
 
 module.exports = (credentials) ->
   new Client(credentials)
