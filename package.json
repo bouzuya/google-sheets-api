@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "es6-promise": "^2.0.1",
-    "googleapis": "^2.0.2"
+    "googleapis": "^2.0.2",
+    "xml2js": "^0.4.6"
   },
   "devDependencies": {
     "coffee-script": "^1.9.1",
