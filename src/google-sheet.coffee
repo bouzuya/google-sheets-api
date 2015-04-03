@@ -23,13 +23,15 @@
 google = require 'googleapis'
 {Promise} = require 'es6-promise'
 {parseString} = require 'xml2js'
+
+baseUrl = require './base-url'
 projections = require './projections'
 visibilities = require './visibilities'
 {Spreadsheet} = require './spreadsheet'
 {Worksheet} = require './worksheet'
 
 class Client
-  @baseUrl: 'https://spreadsheets.google.com/feeds'
+  @baseUrl: baseUrl
 
   @visibilities: visibilities
 
