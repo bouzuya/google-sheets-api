@@ -6,6 +6,9 @@
   "bugs": {
     "url": "https://github.com/bouzuya/google-sheets-api/issues"
   },
+  "dependencies": {
+    "googleapis": "^2.0.2"
+  },
   "devDependencies": {
     "coffee-script": "^1.9.1",
     "del": "^1.1.1",
