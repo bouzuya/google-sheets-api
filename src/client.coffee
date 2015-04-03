@@ -1,25 +1,3 @@
-# Client / Spreadsheet / Worksheet
-#
-# Example:
-# worksheet = null
-# client = newClient({ email: config.googleEmail, key: config.googleKey })
-# spreadsheet = client.getSpreadsheet(config.googleSheetKey)
-# spreadsheet.getWorksheetIds()
-# .then (worksheetIds) ->
-#   spreadsheet.getWorksheet(worksheetIds[0])
-# .then (w) -> worksheet = w
-# .then ->
-#   worksheet.getValue({ row: 1, col: 1 })
-# .then (value) ->
-#   worksheet.setValue({ row: 1, col: 1, value: value })
-# .then ->
-#   worksheet.getCells({ row: 1 })
-# .then (cells) ->
-#   console.log cells.filter (i) -> i.col is 1
-# .catch (e) ->
-#   console.error e
-#
-
 google = require 'googleapis'
 {Promise} = require 'es6-promise'
 {parseString} = require 'xml2js'
@@ -61,5 +39,4 @@ class Client
       parseString xml, (err, parsed) ->
         if err? then reject(err) else resolve(parsed)
 
-module.exports = (credentials) ->
-  new Client(credentials)
+module.exports.Client = Client
