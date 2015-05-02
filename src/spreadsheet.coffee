@@ -18,10 +18,11 @@ class Spreadsheet
     @client.request({ url })
     .then @client.parseXml.bind(@client)
     .then (data) ->
-      data.feed.entry.map (i) ->
+      ids = data.feed.entry?.map (i) ->
         u = i.id[0]
         throw new Error() if u.indexOf(url) isnt 0
         u.replace(url + '/', '')
+      ids ? []
 
   # visibilities: private / public
   # projections: full / basic

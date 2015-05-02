@@ -40,11 +40,12 @@ class Worksheet
     })
     .then @client.parseXml.bind(@client)
     .then (data) =>
-      data.feed.entry.map (i) =>
+      cells = data.feed.entry?.map (i) =>
         [_, colName, rowString] = i.title[0].match(/^([A-Z]+)(\d+)$/)
         row = parseInt(rowString, 10)
         col = @_parseColumnName(colName)
         { row, col, value: i.content[0] }
+      cells ? []
 
   setValue: (positionAndValue) ->
     { row, col } = @_parsePosition(positionAndValue)
